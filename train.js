@@ -20,15 +20,15 @@
 
 // MASALAN: findDoublers("hello"); natija true qaytadi. Sababi ikki marotaba takrorlangan 'll' harfi mavjud!
 
-function findDoublers(harf) {
-    const set = new Set(harf);
-    if (set.size !== harf.length) {
-      return true; 
-    } else {
-      return false;
-    }
-  };
+// function findDoublers(harf) {
+//     const set = new Set(harf);
+//     if (set.size !== harf.length) {
+//       return true; 
+//     } else {
+//       return false;
+//     }
+//   };
   
-console.log(findDoublers("black"));
+// console.log(findDoublers("black"));
 
 
