@@ -17,6 +17,7 @@
     align-items: center;
     margin-top: 2px;
     background: #F0F0F6;
+    /* background: red; */
 }
 
 .main_frame .left_frame {
@@ -376,7 +377,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 123.6%; /* 22.248px */
 text-transform: capitalize;
-margin-top: 65px;
+margin-top: 26px;
 }
 
 .content{
@@ -424,10 +425,10 @@ margin-top: 35px;
     margin-top: 50px;
     width: 30px;
     height: 30px;
-    font-size: 24px;
+    font-size: 30px;
 }
 .icon2{
-    margin-top: 174px;
+    margin-top: 80px;
     width: 160px;
     height: 160px;
     display: flex; 
@@ -512,8 +513,80 @@ margin-top: 35px;
     background-color: #F0F0F6;
 
 }
+.bottom-farm{
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+        position: relative;
+    width: 1440px;
+    height: 1312px;
+    display: flex
+;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    background: #F0F0F6; */
+    /* background: red; */
+
+    
+}
+.rasul{
+    color: var(--Black, #2B2B2B);
+
+/* H2 - 32px */
+font-family: Inter;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 123.6%; /* 39.552px */
+text-transform: capitalize;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 69px;
+}
 
 
+.asil{
+    color: var(--Paragraph-Font, #767676);
+text-align: center;
+font-kerning: none;
+font-feature-settings: 'calt' off;
 
-
-
+/* P-15px paragraph */
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 160% */
+text-transform: capitalize;
+width: 438px;
+height: 68px;
+flex-shrink: 0;
+margin-left: 265px;
+margin-top: 25px
+}
+.img-card{
+    /* display: flex;
+    align-items:center;
+    justify-content: center; */
+    margin-left: 120px;
+    margin-top: 28px;
+}
+.reyting1 {
+    margin-top: -10px;
+}
+.line1{
+    margin-top: -10px;
+}
+.statik1{
+    /* display: flex; */
+}
+.font-size{
+    /* display: flex; */
+    /* align-items: center; */
+    /* margin-right: 10px; */
+}
+.extra{
+    margin-left: 4px;
+}
