@@ -294,6 +294,7 @@ button{
     background-color: #FFB400;
     border-radius: 5px;
     outline: 2px solid #FFB400;
+    border: none;
 }
 .button{
     padding: 0px 40px;
@@ -589,4 +590,44 @@ margin-top: 25px
 }
 .extra{
     margin-left: 4px;
+}
+.birinchi{
+    stroke-width: 2px;
+stroke: rgba(255, 180, 0, 0.80);
+}
+.ikinchi{
+    width: 16.016px;
+height: 15.566px;
+flex-shrink: 0;
+stroke-width: 2px;
+stroke: rgba(5, 255, 0, 0.80);
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.birinchi {
+    padding-bottom: 14px;
+}
+.ikkinchi {
+    padding-top: 14px;
+}
+.bottom-icon {
+    padding: 16px 0px 0px 16px;
+}
+.kvadrat-icon {
+    margin-top: -14px;
+    padding-left: 64px;
+}
+.besh-dumaloq-icon {
+    padding-top: 34px;
+    margin-right: -64px;
+}
+.img-left {
+    margin-left: 300px;
+    margin-top: -400px;
+}
+.uchburchek-icon{
+    padding: 330px 0px 0px 343px
 }

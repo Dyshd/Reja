@@ -1,34 +1,79 @@
-// TASK G:
+// // TASK G:
 
-// Yagona parametrga ega function tuzing.
-// Va bu function parametr orqalik integer ma'lumot turlariga ega bo'lgan bir arrayni qabul qilsin.
-// Ushbu function bizga arrayning tarkibidagi birinchi eng katta qiymatning indeksini qaytarsin.
+// // Yagona parametrga ega function tuzing.
+// // Va bu function parametr orqalik integer ma'lumot turlariga ega bo'lgan bir arrayni qabul qilsin.
+// // Ushbu function bizga arrayning tarkibidagi birinchi eng katta qiymatning indeksini qaytarsin.
 
-// MASALAN: getHighestIndex([5, 21, 12, 21 ,8]); return qiladi 1 sonini
-// Yuqoridagi misolda, birinchi indeksda 21 joylashgan.
-// Va bu 21 soni arrayning tarkibidagi birinchi eng katta son hisobladi va bizga uning indeksi 1 qaytadi.
-
-
+// // MASALAN: getHighestIndex([5, 21, 12, 21 ,8]); return qiladi 1 sonini
+// // Yuqoridagi misolda, birinchi indeksda 21 joylashgan.
+// // Va bu 21 soni arrayning tarkibidagi birinchi eng katta son hisobladi va bizga uning indeksi 1 qaytadi.
 
 
 
-// TASK F
 
-// Yagona string argumentga ega findDoublers nomli function tuzing
-// Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa
-// true yokida false natija qaytarsin.
 
-// MASALAN: findDoublers("hello"); natija true qaytadi. Sababi ikki marotaba takrorlangan 'll' harfi mavjud!
+// // TASK F
 
-// function findDoublers(harf) {
-//     const set = new Set(harf);
-//     if (set.size !== harf.length) {
-//       return true; 
-//     } else {
-//       return false;
-//     }
-//   };
+// // Yagona string argumentga ega findDoublers nomli function tuzing
+// // Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa
+// // true yokida false natija qaytarsin.
+
+// // MASALAN: findDoublers("hello"); natija true qaytadi. Sababi ikki marotaba takrorlangan 'll' harfi mavjud!
+
+// // function findDoublers(harf) {
+// //     const set = new Set(harf);
+// //     if (set.size !== harf.length) {
+// //       return true; 
+// //     } else {
+// //       return false;
+// //     }
+// //   };
   
-// console.log(findDoublers("black"));
+// // console.log(findDoublers("black"));
 
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//     "yaxshi talaba buling", // 0-20
+//     "togri boshliq tanlang va koproq hato qiling", // 20-30
+//     "siz kuchli bulgan narsalarni qiling", //30-40
+//     "yoshlarga investitsya qiling", //50-60
+//     "endi dam oling, foydasi yuq endi", // 60
+// ];
+
+// function maslahatBering(a, callback){
+//     if(typeof a !== "number") callback ("insert a number", null);
+//     else if(a <= 20) callback(null, list[0]);
+//     else if (a > 20 && a <=30) callback(null,list[1]);
+//     else if (a > 30 && a <=40) callback(null,list[2]);
+//     else if (a > 40 && a <=50) callback(null,list[3]);
+//     else if (a > 50 && a <=60) callback(null,list[4]);
+//     else{
+//         setTimeout(function () {
+//             callback(null, list[5]);
+//         }, 5000);
+//     }
+// }
+
+// // bu joyda parametr sfatida function kitebti callbeckga
+// console.log("passed here 0");
+
+// maslahatBering(65, (err, data) => {
+//     if(err)console.log('ERROR:', err);
+//     else {
+//         console.log('javob:', data);
+//     }
+// });
+// console.log("passd here 1");
+
+
+function getHighestIndex (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > arr[0]) {
+            console.log(i);
+            return;
+        }
+    }
+}
+
+getHighestIndex([5,21,12,8]);
 
