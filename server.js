@@ -49,12 +49,12 @@ app.get("/", function(req , res){
 });
 
 app.get('/author', (req , res) => {
-    res.render("author",{user: user})
+    res.render("reja",{user: user})
 })
 
 
 const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT , function(){
-    console.log(`The server is running succesfully on port: ${PORT}`)
+    console.log(`The server is running succesfully on port: ${PORT},http://localhost:${PORT}`)
 });
