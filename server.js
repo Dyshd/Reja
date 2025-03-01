@@ -1,60 +1,32 @@
-console.log('Web Serverni boshlash');
-const express = require("express");
-const res = require("express/lib/response");
-const app = express();
 const http = require("http");
-const fs = require("fs");
+const mongodb = require("mongodb")
+// const db = require("db")
 
 
-let user;
-fs.readFile("database/user.json", "utf8", (err, data) => {
-    if(err) {
-        console.log("ERROR:", err);
-    }else{
-        user = JSON.parse(data)
+
+let db;
+const connectionString = "mongodb+srv://Muhammad:20070526Mm@cluster0.v42ip.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+mongodb.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+},
+ (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB")
+    else {
+        console.log("MongoDb conection secced"); 
+        // console.log(client);
+        module.exports = client;
+           
+        const app = require("./app");
+        const server = http.createServer(app);
+        let PORT = 3000;
+        server.listen(PORT, function () {
+            console.log(`The server is running succesfully on port: ${PORT},http://localhost:${PORT}`)
+        });
     }
 });
-//1 Kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+// module.exports = db;
 
 
-//2: Session code
 
-//3 Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-//4 Routing code 
-// app.get("/hello",function(req , res){
-//     res.end(`<h1>HELLO WORLD by Muhammad</h1>`)
-// });
-
-// app.get("/gift",function(req , res){
-//     res.end(`<h1>Siz sovgalar bulimidasiz</h1>`)
-// });
-
-// app.get("/",function(req , res){
-//     res.render(`project`)
-// });
-
-app.post("/create-item", (req, res) => {
-    console.log(req.body);
-    res.json({test: "success"});
-});
-
-app.get("/", function(req , res){
-    res.render("harid");
-});
-
-app.get('/author', (req , res) => {
-    res.render("reja",{user: user})
-})
-
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT , function(){
-    console.log(`The server is running succesfully on port: ${PORT},http://localhost:${PORT}`)
-});
