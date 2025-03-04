@@ -9,11 +9,11 @@ const db = require("./server").db();
 //MongoDB connect
 
 //1 Kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.static("public")); //MiddleWare DP: public ochiqlanadi
+app.use(express.json());  //MiddleWare DP: API
+app.use(express.urlencoded({extended: true})); //MiddleWare DP: Traditional API
 
-
+ 
 //2: Session code
 
 //3 Views code
@@ -27,12 +27,8 @@ app.post("/create-item", (req, res) => {
     console.log('user entered /create-item'); 
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({reja: new_reja}, (err , data) => {
-        if(err){
-            console.log(err)
-            res.end('somthing went wrong');
-        }else{
-            res.end('successfully added');
-        }
+        console.log(data.ops)
+        res.json(data.ops[0]);
     });
     // res.json({test: "success"});
 });
