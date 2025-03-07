@@ -5,6 +5,7 @@ const app = express();
 // const fs = require("fs");/
 const http = require("http");
 const db = require("./server").db();
+const mongodb = require("mongodb");
 
 //MongoDB connect
 
@@ -31,6 +32,14 @@ app.post("/create-item", (req, res) => {
         res.json(data.ops[0]);
     });
     // res.json({test: "success"});
+});
+app.post("/delete-item", (req, res) => {
+    const id = req.body.id;
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)},
+    function(err, data){
+        res.json({state: "sucsess"});
+    })
+
 });
 
 app.get("/", function(req , res){
