@@ -12,9 +12,9 @@ const mongodb = require("mongodb");
 //1 Kirish code
 app.use(express.static("public")); //MiddleWare DP: public ochiqlanadi
 app.use(express.json());  //MiddleWare DP: API
-app.use(express.urlencoded({extended: true})); //MiddleWare DP: Traditional API
+app.use(express.urlencoded({ extended: true })); //MiddleWare DP: Traditional API
 
- 
+
 //2: Session code
 
 //3 Views code
@@ -25,9 +25,9 @@ app.set("view engine", "ejs");
 
 
 app.post("/create-item", (req, res) => {
-    console.log('user entered /create-item'); 
+    console.log('user entered /create-item');
     const new_reja = req.body.reja;
-    db.collection("plans").insertOne({reja: new_reja}, (err , data) => {
+    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
         console.log(data.ops)
         res.json(data.ops[0]);
     });
@@ -35,23 +35,43 @@ app.post("/create-item", (req, res) => {
 });
 app.post("/delete-item", (req, res) => {
     const id = req.body.id;
-    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)},
-    function(err, data){
-        res.json({state: "sucsess"});
-    })
+    db.collection("plans").deleteOne({ _id: new mongodb.ObjectId(id) },
+        function (err, data) {
+            res.json({ state: "sucsess" });
+        })
 
 });
 
-app.get("/", function(req , res){
+app.post("/edit-item", (req, res) => {
+    const data = req.body;
+    console.log(data);
+    db.collection("plans").findOneAndUpdate(
+        { _id: new mongodb.ObjectId(id) },
+        { $set: { reja: data.new_input } },
+        function (err, data) {
+            res.json({ state: "sucsess" });
+        });
+})
+
+app.post("/delete-all", (req, res) => {
+    if (req.body.delete_all) {
+        db.collection("plans").deleteMany(function () {
+            res.json({ state: "hamma rejalar ochirildi" })
+        })
+
+    }
+})
+
+app.get("/", function (req, res) {
     console.log('user entered /')
     // res.render("harid");
     db.collection("plans").find().toArray((err, data) => {
-        if(err){
+        if (err) {
             console.log(err);
             res.end("something went wrong");
-        }else{
+        } else {
             console.log(data);
-            res.render("reja", {items: data});
+            res.render("reja", { items: data });
         }
     });
 });
