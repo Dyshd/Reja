@@ -42,25 +42,57 @@ app.post("/delete-item", (req, res) => {
 
 });
 
+// app.post("/edit-item", (req, res) => {
+//     const data = req.body;
+//     console.log(data);
+//     db.collection("plans").findOneAndUpdate(
+//         { _id: new mongodb.ObjectId(id) },
+//         { $set: { reja: data.new_input } },
+//         function (err, data) {
+//             res.json({ state: "sucsess" });
+//         });
+// })
+
+
 app.post("/edit-item", (req, res) => {
-    const data = req.body;
-    console.log(data);
+    const { id, new_input } = req.body; // ✅ ID va yangi matnni olish
+    if (!id || !new_input) {
+        return res.status(400).json({ error: "ID yoki matn yetishmayapti" });
+    }
+
     db.collection("plans").findOneAndUpdate(
-        { _id: new mongodb.ObjectId(id) },
-        { $set: { reja: data.new_input } },
-        function (err, data) {
-            res.json({ state: "sucsess" });
-        });
-})
+        { _id: new mongodb.ObjectId(id) }, // ✅ IDni MongoDB formatiga o'tkazish
+        { $set: { reja: new_input } },
+        function (err, result) {
+            if (err) {
+                console.error("Update xatosi:", err);
+                return res.status(500).json({ error: "Tahrirlashda xatolik yuz berdi" });
+            }
+            res.json({ state: "success", updatedItem: result });
+        }
+    );
+});
+
 
 app.post("/delete-all", (req, res) => {
     if (req.body.delete_all) {
         db.collection("plans").deleteMany(function () {
             res.json({ state: "hamma rejalar ochirildi" })
-        })
+        })  
 
     }
 })
+
+
+
+// app.post("/delete-item", (req, res) => {
+//     const id = req.body.id;
+//     db.collection("plans").deleteOne({ _id: new mongodb.ObjectId(id) },
+//         function (err, data) {
+//             res.json({ state: "sucsess" });
+//         })
+// });
+
 
 app.get("/", function (req, res) {
     console.log('user entered /')
@@ -82,5 +114,6 @@ app.get("/", function (req, res) {
 
 module.exports = app;
 // module.exports = db;
+
 
 

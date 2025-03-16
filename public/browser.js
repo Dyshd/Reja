@@ -1,4 +1,4 @@
-const { response } = require("../app");
+// const { response } = require("../app");
 
 console.log("FrontEnd JS ishga tushdi");
 function itemTemplate(item){
@@ -28,7 +28,7 @@ document.getElementById("create-form").addEventListener("submit", function(e){
 
     axios
     .post("/create-item", {reja: createField.value})
-    .then(response => {
+    .then((response) => {
         document
         .getElementById("item-list")
         .insertAdjacentHTML("beforeend", itemTemplate(response.data));
@@ -64,17 +64,17 @@ document.addEventListener("click", function(e) {
                 console.log(response);
                 e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput;
             }).catch(err => {
-            console.log("Iltimos qaytadan harakat qilib kuring!")   
+                console.log("Iltimos qaytadan harakat qilib kuring!")   
             })
        }
     }
-    
 
 });
 
 document.getElementById("clean-all").addEventListener("click", function() {
-    axios.post("/delate-all", {delete_all: true}).then((response) => {
+    axios.post("/delete-all", {delete_all: true}).then((response) => {
         alert(response.data.state);
         document.location.reload();
     })
-})
+});
+
